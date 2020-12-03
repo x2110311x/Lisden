@@ -655,9 +655,9 @@ class MusicBot(discord.Client):
                 prefix = u'\u275A\u275A ' if is_paused else ''
 
                 name = u'{}{}'.format(prefix, entry.title)[:128]
-                game = discord.Game(type=0, name=name)
+                game = discord.Activity(type=discord.ActivityType.listening, name=name)
         else:
-            game = discord.Game(type=0, name=self.config.status_message.strip()[:128])
+            game = discord.Activity(type=discord.ActivityType.listening, name=self.config.status_message.strip()[:128])
 
         async with self.aiolocks[_func_()]:
             if game != self.last_status:
